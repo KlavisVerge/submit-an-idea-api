@@ -1,0 +1,25 @@
+extends:
+  - eslint:recommended
+  - google
+env:
+  node: true
+parserOptions:
+  ecmaVersion: 6
+globals:
+  Promise: true
+rules:
+  object-curly-spacing:
+    - error
+    - always
+  new-cap: off
+  comma-dangle:
+    - error
+    - never
+  no-console: off
+  max-len: off
+  prefer-rest-params: off
+  no-unused-vars:
+    - error
+    - varsIgnorePattern: ^_
+  camelcase: 0
+  
