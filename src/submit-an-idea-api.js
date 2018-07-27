@@ -12,7 +12,7 @@ exports.handler = (event, context) => {
             event.body = JSON.parse(event.body);
         }
     }
-    const required = ['idea'].filter((property) => !event.body[property]);
+    const required = ['idea', 'email'].filter((property) => !event.body[property]);
     if(required.length > 0){
         return Promise.reject({
             statusCode: 400,
@@ -23,9 +23,9 @@ exports.handler = (event, context) => {
     var params = {
         TableName: 'submit-an-idea',
         Item: {
-            hashkey: {S: new Date() + uuidv4()},
-            message: {S: event.body.idea.length > 1000 ? event.body.idea.substring(0, 999) : event.body.idea},
-            email: {S: event.body.idea.email > 1000 ? event.body.email.substring(0, 999) : event.body.email}
+            email: {S: event.body.idea.email > 1000 ? event.body.email.substring(0, 999) : event.body.email},
+            rangekey: {S: new Date() + uuidv4()},
+            message: {S: event.body.idea.length > 1000 ? event.body.idea.substring(0, 999) : event.body.idea}
         }
     };
     

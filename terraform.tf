@@ -23,10 +23,16 @@ resource "aws_dynamodb_table" "submit-an-idea" {
   name           = "submit-an-idea"
   read_capacity  = 1
   write_capacity = 1
-  hash_key       = "hashkey"
+  hash_key       = "email"
+  range_key      = "rangekey"
 
   attribute {
-    name = "hashkey"
+    name = "email"
+    type = "S"
+  }
+
+  attribute {
+    name = "rangekey"
     type = "S"
   }
 
