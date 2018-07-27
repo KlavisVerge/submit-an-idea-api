@@ -24,7 +24,7 @@ exports.handler = (event, context) => {
         TableName: 'submit-an-idea',
         Item: {
             'hashkey': new Date() + uuidv4(),
-            'message': event.body.game.length > 1000 ? event.body.game.substring(0, 999) : event.body.game.length
+            'message': event.body.idea.length > 1000 ? event.body.idea.substring(0, 999) : event.body.idea.length
         }
     };
     
