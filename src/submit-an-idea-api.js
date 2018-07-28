@@ -43,7 +43,7 @@ exports.handler = (event, context) => {
                 }
             });
         } else {
-            let returnObject = JSON.parse({'message': 'Your idea was successfully received!'});
+            let returnObject = {'message': 'Your idea was successfully received!'};
             return context.succeed({
                 statusCode: 200,
                 body: JSON.stringify(returnObject),
