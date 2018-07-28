@@ -23,10 +23,10 @@ exports.handler = (event, context) => {
     var params = {
         TableName: 'submit-an-idea',
         Item: {
-            email: {S: event.body.idea.email > 1000 ? event.body.email.substring(0, 999) : event.body.email},
+            email: {S: event.body.email.length > 1000 ? event.body.email.substring(0, 999) : event.body.email},
             rangekey: {S: new Date() + uuidv4()},
             message: {S: event.body.idea.length > 1000 ? event.body.idea.substring(0, 999) : event.body.idea},
-            received: {S: new Date()}
+            received: {S: new Date().toString()}
         }
     };
     
