@@ -34,7 +34,7 @@ exports.handler = (event, context) => {
         if (err) {
             return context.succeed({
                 statusCode: 200,
-                body: 'There was an error processing your idea. Please try again later.',
+                body: err,
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Methods': 'POST',
@@ -43,9 +43,10 @@ exports.handler = (event, context) => {
                 }
             });
         } else {
+            let returnObject = JSON.parse({'message': 'Your idea was successfully received!'});
             return context.succeed({
                 statusCode: 200,
-                body: 'Your idea was successfully received!',
+                body: JSON.stringify(returnObject),
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Methods': 'POST',
